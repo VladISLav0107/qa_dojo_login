@@ -28,11 +28,11 @@ async function registerNewUser( page:Page ) {
 
 test.describe('Registration', { tag: '@auth' }, () => {
 
-  test('Registration successful', async ({ page }) => {
+  test('Registration successful, all data is unique', async ({ page }) => {
     await registerNewUser(page);
   });
 
-  test('Sign in with an existing account', async ({ page }) => {
+  test('Registration with an email address that has already been used', async ({ page }) => {
     await page.goto('/register');
     await page.getByTestId('auth-username').fill('testLV');
     await page.getByTestId('auth-email').fill('test@lv.com');
